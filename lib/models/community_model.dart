@@ -3,8 +3,8 @@ class Community{
   final String name;
   final String banner;
   final String avatar;
-  final List<String> members;
-  final List<String> mods;
+  final List<dynamic> members;
+  final List<dynamic> mods;
 
 //<editor-fold desc="Data Methods">
   const Community({
@@ -84,8 +84,8 @@ class Community{
       name: map['name'] as String,
       banner: map['banner'] as String,
       avatar: map['avatar'] as String,
-      members: map['members'] as List<String>,
-      mods: map['mods'] as List<String>,
+      members: map['members'] as List<dynamic>,
+      mods: map['mods'] as List<dynamic>,
     );
   }
 
