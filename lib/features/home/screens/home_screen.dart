@@ -8,11 +8,11 @@ import 'package:reddit_clone/features/home/drawers/profile_drawer.dart';
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  void displayDrawer(BuildContext context){
+  void displayDrawer(BuildContext context) {
     Scaffold.of(context).openDrawer();
   }
 
-  void displayEndDrawer(BuildContext context){
+  void displayEndDrawer(BuildContext context) {
     Scaffold.of(context).openEndDrawer();
   }
 
@@ -23,26 +23,31 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text("Home"),
         centerTitle: false,
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu), onPressed: () {
-                displayDrawer(context);
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              displayDrawer(context);
             },
-            );
-          }
-        ),
+          );
+        }),
         actions: [
-          IconButton(onPressed: (){
-            showSearch(context: context, delegate: SearchCommunityDelegate(ref));
-          }, icon: const Icon(Icons.search)),
-          GestureDetector(
-            onTap: () => displayEndDrawer(context),
-            child: IconButton(onPressed: (){}, icon: CircleAvatar(
-              radius: 16,
-              backgroundImage: NetworkImage(user!.profilePic),
-            )),
-          )
+          IconButton(
+              onPressed: () {
+                showSearch(
+                    context: context, delegate: SearchCommunityDelegate(ref));
+              },
+              icon: const Icon(Icons.search)),
+          Builder(
+            builder: (context) {
+              return IconButton(
+                  onPressed: () => displayEndDrawer(context),
+                  icon: CircleAvatar(
+                    radius: 16,
+                    backgroundImage: NetworkImage(user!.profilePic),
+                  ));
+            }
+          ),
         ],
       ),
       drawer: const CommunityListDrawer(),
